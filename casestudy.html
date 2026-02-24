@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study 01 — Financially Hamza</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --navy: #0a1628; --navy2: #111f38; --purple: #a855f7; --purple-light: #d8b4fe; --border: rgba(255,255,255,0.07); --text: rgba(255,255,255,0.75); --muted: rgba(255,255,255,0.35); }
+  body { background: var(--navy); color: var(--text); font-family: 'Inter', sans-serif; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'Instrument Serif', serif; font-size: 22px; color: #fff; text-decoration: none; }
+  .nav-logo em { font-style: italic; color: #60a5fa; }
+  .nav-back { font-size: 13px; color: var(--muted); text-decoration: none; }
+  .nav-back:hover { color: #fff; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+
+  .cs-hero { padding: 80px 0 60px; border-bottom: 1px solid var(--border); }
+  .sh-breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .sh-breadcrumb a { color: var(--purple-light); text-decoration: none; }
+  .sh-tag { display: inline-block; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); border-radius: 100px; padding: 5px 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 20px; }
+  .sh-title { font-family: 'Instrument Serif', serif; font-size: 48px; color: #fff; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .sh-title em { font-style: italic; color: var(--purple-light); }
+  .sh-desc { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+  .company-row { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; }
+  .cr-icon { font-size: 22px; }
+  .cr-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7); }
+  .cr-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* Article body */
+  .cs-body { padding: 56px 0 100px; }
+  .cs-section { margin-bottom: 56px; }
+  .cs-section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .cs-section-label::after { content: ''; flex: 1; height: 1px; background: rgba(168,85,247,0.15); }
+  .cs-section h2 { font-family: 'Instrument Serif', serif; font-size: 30px; color: #fff; margin-bottom: 14px; line-height: 1.2; }
+  .cs-section h2 em { font-style: italic; color: var(--purple-light); }
+  .cs-text { font-size: 15px; color: var(--text); line-height: 1.8; margin-bottom: 14px; }
+  .cs-text strong { color: #fff; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+  .stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .stat-val { font-family: 'Instrument Serif', serif; font-size: 36px; color: #fff; line-height: 1; margin-bottom: 5px; }
+  .stat-val.red { color: #f87171; }
+  .stat-val.green { color: #4ade80; }
+  .stat-val.purple { color: var(--purple-light); }
+  .stat-label { font-size: 11px; color: var(--muted); line-height: 1.45; }
+
+  .client-table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 12px; overflow: hidden; }
+  .client-table thead tr { background: rgba(255,255,255,0.05); }
+  .client-table thead th { padding: 11px 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-align: left; }
+  .client-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .client-table tbody td { padding: 14px 16px; font-size: 13.5px; color: var(--text); }
+  .client-table .highlight { background: rgba(239,68,68,0.06); }
+  .flag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+  .flag.red { background: rgba(239,68,68,0.15); color: #f87171; }
+  .flag.green { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .flag.yellow { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .margin-val { font-family: 'Instrument Serif', serif; font-size: 18px; }
+  .margin-val.low { color: #f87171; }
+  .margin-val.high { color: #4ade80; }
+  .margin-val.mid { color: #fbbf24; }
+
+  .decision-block { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .dec { display: flex; gap: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 20px; }
+  .dec-num { width: 32px; height: 32px; border-radius: 10px; background: rgba(168,85,247,0.15); color: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+  .dec-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .dec-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .dec-text strong { color: var(--text); }
+
+  .convo { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 24px; margin: 20px 0; }
+  .convo-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .convo-line { display: flex; gap: 12px; margin-bottom: 12px; }
+  .convo-line:last-child { margin-bottom: 0; }
+  .convo-role { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; width: 72px; flex-shrink: 0; padding-top: 2px; }
+  .convo-line.agency .convo-role { color: #60a5fa; }
+  .convo-line.client .convo-role { color: var(--muted); }
+  .convo-msg { font-size: 14px; line-height: 1.6; }
+  .convo-line.agency .convo-msg { color: var(--text); }
+  .convo-line.client .convo-msg { color: rgba(255,255,255,0.4); }
+  .convo-msg strong { color: #fff; }
+
+  .outcome-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .out { border-radius: 14px; padding: 22px 18px; text-align: center; position: relative; overflow: hidden; }
+  .out::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .out.down::before { background: #ef4444; }
+  .out.up::before { background: #22c55e; }
+  .out.purple-c::before { background: var(--purple); }
+  .out { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
+  .out-icon { font-size: 20px; margin-bottom: 8px; }
+  .out-val { font-family: 'Instrument Serif', serif; font-size: 36px; line-height: 1; margin-bottom: 5px; }
+  .out.down .out-val { color: #f87171; }
+  .out.up .out-val { color: #4ade80; }
+  .out.purple-c .out-val { color: var(--purple-light); }
+  .out-label { font-size: 11px; color: var(--muted); line-height: 1.45; }
+
+  .takeaways { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .tk { display: flex; gap: 12px; }
+  .tk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 7px; }
+  .tk-text { font-size: 14px; color: var(--text); line-height: 1.65; }
+  .tk-text strong { color: #fff; }
+
+  .final-quote { border-left: 3px solid var(--purple); padding-left: 22px; margin-top: 24px; }
+  .fq-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 8px; }
+  .fq-text { font-family: 'Instrument Serif', serif; font-size: 22px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .fq-text em { color: var(--purple-light); font-style: normal; }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; justify-content: space-between; }
+  .footer-brand { font-family: 'Instrument Serif', serif; font-size: 16px; color: rgba(255,255,255,0.3); }
+  .footer-brand em { font-style: italic; color: rgba(168,85,247,0.4); }
+  .footer-note { font-size: 11px; color: rgba(255,255,255,0.15); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Financially <em>Hamza</em></a>
+  <a href="index.html" class="nav-back">← Back to all series</a>
+</nav>
+
+<div class="container">
+  <div class="cs-hero">
+    <div class="sh-breadcrumb"><a href="index.html">Home</a> / Case Study 01</div>
+    <div class="sh-tag">Case Study · Full Breakdown</div>
+    <div class="sh-title">30% of revenue.<br><em>4% of profit.</em><br>One client.</div>
+    <div class="sh-desc">A staffing agency with strong revenue growth and a margin problem hiding in plain sight — for three years. This is what happened when they finally looked at the right numbers.</div>
+    <div class="company-row">
+      <div class="cr-icon">👥</div>
+      <div>
+        <div class="cr-name">Regional Staffing Agency</div>
+        <div class="cr-meta">11 active clients · £2.4M annual revenue · 6-year operating history</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+
+    <div class="cs-section">
+      <div class="cs-section-label">Part 1 — The Situation</div>
+      <h2>Growing revenue. <em>Nobody tracking margin.</em></h2>
+      <div class="cs-text">The agency had grown revenue for three consecutive years. On paper, the business looked healthy. What nobody had ever done was break margin down by client. Every client appeared profitable because overhead was pooled. The monthly management accounts showed total revenue, total costs, and a bottom line that looked acceptable.</div>
+      <div class="cs-text">Nobody had ever asked: <strong>which clients are actually making us money — and which ones are consuming capacity without delivering margin in return?</strong></div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">+18%</div><div class="stat-label">Revenue growth year-on-year, 3 years running</div></div>
+        <div class="stat"><div class="stat-val purple">30%</div><div class="stat-label">Of total revenue from one anchor client</div></div>
+        <div class="stat"><div class="stat-val red">0</div><div class="stat-label">Margin-by-client reports ever produced</div></div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <div class="cs-section-label">Part 2 — The Data</div>
+      <h2>What the report <em>revealed.</em></h2>
+      <div class="cs-text">The finance director built a margin-by-client breakdown for the first time. It took one afternoon. What it showed changed every conversation in the business.</div>
+      <table class="client-table">
+        <thead><tr><th>Client</th><th>Revenue Share</th><th>Contribution Margin</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td>🏢 Client A (Anchor)</td><td>30%</td><td><span class="margin-val low">4%</span></td><td><span class="flag red">⚠️ Critical</span></td></tr>
+          <tr class="highlight"><td>🏭 Client B</td><td>12%</td><td><span class="margin-val low">7%</span></td><td><span class="flag red">⚠️ Review</span></td></tr>
+          <tr><td>🏗️ Client C</td><td>18%</td><td><span class="margin-val high">31%</span></td><td><span class="flag green">✓ Healthy</span></td></tr>
+          <tr><td>🏥 Client D</td><td>14%</td><td><span class="margin-val high">28%</span></td><td><span class="flag green">✓ Healthy</span></td></tr>
+          <tr><td>🏬 Remaining 7</td><td>26%</td><td><span class="margin-val mid">19%</span></td><td><span class="flag yellow">→ Average</span></td></tr>
+        </tbody>
+      </table>
+      <div class="cs-text" style="margin-top:16px;">Client A was consuming <strong>30% of team capacity</strong> to deliver 4% margin. Two smaller clients were generating nearly 8x more profit per pound of revenue. The business had been protecting the wrong client.</div>
+    </div>
+
+    <div class="cs-section">
+      <div class="cs-section-label">Part 3 — The Decision</div>
+      <h2>Three decisions made <em>in one week.</em></h2>
+      <div class="decision-block">
+        <div class="dec"><div class="dec-num">1</div><div><div class="dec-title">Client A — Go back with a revised rate</div><div class="dec-text">Calculated the true cost of servicing Client A including account management time, admin, and placement complexity. Presented a <strong>22% rate increase with full cost justification.</strong></div></div></div>
+        <div class="dec"><div class="dec-num">2</div><div><div class="dec-title">Client B — Set a margin floor and hold the line</div><div class="dec-text">Given 60 days to accept revised terms. Minimum <strong>15% contribution margin floor.</strong> If not met, the relationship would not be renewed.</div></div></div>
+        <div class="dec"><div class="dec-num">3</div><div><div class="dec-title">Internal — Make margin-by-client reporting permanent</div><div class="dec-text">Added to monthly management accounts. <strong>No client relationship renewed</strong> without a margin review attached going forward.</div></div></div>
+      </div>
+      <div class="convo">
+        <div class="convo-label">How the Client A conversation went</div>
+        <div class="convo-line agency"><div class="convo-role">Agency</div><div class="convo-msg">We've reviewed our cost base and need to adjust rates by 22%. Here's the breakdown of what servicing your account actually costs us.</div></div>
+        <div class="convo-line client"><div class="convo-role">Client A</div><div class="convo-msg">That's a significant increase. We'll need to think about it.</div></div>
+        <div class="convo-line agency"><div class="convo-role">Agency</div><div class="convo-msg"><strong>We understand. The current rate isn't sustainable for us to maintain the service level you expect. We're happy to discuss structure — but not the direction.</strong></div></div>
+      </div>
+      <div class="cs-text">Client A accepted 60% of the increase. The agency exited the volume that didn't meet the margin floor — without losing the relationship entirely.</div>
+    </div>
+
+    <div class="cs-section">
+      <div class="cs-section-label">Part 4 — The Outcome</div>
+      <h2>Revenue fell. <em>Profit grew 19%.</em></h2>
+      <div class="outcome-grid">
+        <div class="out down"><div class="out-icon">📉</div><div class="out-val">−8%</div><div class="out-label">Revenue. Expected — lost low-margin volume.</div></div>
+        <div class="out up"><div class="out-icon">📈</div><div class="out-val">+19%</div><div class="out-label">Net profit. More on less revenue.</div></div>
+        <div class="out purple-c"><div class="out-icon">⏱️</div><div class="out-val">30%</div><div class="out-label">Capacity freed from low-margin work.</div></div>
+      </div>
+      <div class="takeaways">
+        <div class="tk"><div class="tk-dot"></div><div class="tk-text"><strong>You cannot manage margin you're not measuring.</strong> Three years of monthly revenue reports missed what one margin-by-client report found in an afternoon.</div></div>
+        <div class="tk"><div class="tk-dot"></div><div class="tk-text"><strong>Big clients are not always good clients.</strong> Revenue share is not the same as profit contribution.</div></div>
+        <div class="tk"><div class="tk-dot"></div><div class="tk-text"><strong>Repricing with data is a different conversation.</strong> When you show a client the cost justification, it stops being a negotiation and becomes a fact.</div></div>
+      </div>
+      <div class="final-quote">
+        <div class="fq-label">The lesson</div>
+        <div class="fq-text">They didn't grow their way out of the problem. They <em>measured their way out of it.</em> That's the difference between managing revenue and managing a business.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Financially <em>Hamza</em></div>
+  <div class="footer-note">© 2025 Hamza A. All content original.</div>
+</footer>
+</body>
+</html>
