@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financially Hamza</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --navy: #0a1628;
+    --navy2: #111f38;
+    --navy3: #1a2f50;
+    --blue: #3b82f6;
+    --blue-light: #60a5fa;
+    --white: #ffffff;
+    --text: rgba(255,255,255,0.75);
+    --muted: rgba(255,255,255,0.35);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--navy); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'Instrument Serif', serif; font-size: 22px; color: #fff; text-decoration: none; }
+  .nav-logo em { font-style: italic; color: var(--blue-light); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+
+  /* HERO */
+  .hero { padding: 100px 40px 80px; max-width: 900px; margin: 0 auto; position: relative; }
+  .hero::before { content: ''; position: absolute; top: 0; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 65%); pointer-events: none; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); border-radius: 100px; padding: 6px 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 28px; }
+  .hero-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero h1 { font-family: 'Instrument Serif', serif; font-size: 64px; font-weight: 400; color: #fff; line-height: 1.06; letter-spacing: -0.025em; margin-bottom: 20px; }
+  .hero h1 em { font-style: italic; color: var(--blue-light); }
+  .hero-sub { font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 560px; font-weight: 400; }
+  .hero-meta { display: flex; align-items: center; gap: 24px; margin-top: 36px; }
+  .hero-stat { }
+  .hs-val { font-family: 'Instrument Serif', serif; font-size: 28px; color: #fff; line-height: 1; }
+  .hs-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .hero-divider { width: 1px; height: 36px; background: var(--border); }
+
+  /* SECTION */
+  .section { max-width: 900px; margin: 0 auto; padding: 0 40px 80px; }
+  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+  .section-title { font-family: 'Instrument Serif', serif; font-size: 32px; color: #fff; }
+  .section-title em { font-style: italic; color: var(--blue-light); }
+  .section-desc { font-size: 13px; color: var(--muted); max-width: 360px; text-align: right; line-height: 1.55; }
+
+  /* SERIES CARD */
+  .series-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 20px; padding: 36px; margin-bottom: 20px; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
+  .series-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; opacity: 0; transition: opacity 0.25s; }
+  .series-card.blue::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .series-card.green::before { background: linear-gradient(90deg, #10b981, #34d399); }
+  .series-card.purple::before { background: linear-gradient(90deg, #a855f7, #d8b4fe); }
+  .series-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .series-card:hover::before { opacity: 1; }
+  .sc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+  .sc-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; }
+  .sc-badge.blue { background: rgba(59,130,246,0.15); color: var(--blue-light); }
+  .sc-badge.green { background: rgba(16,185,129,0.15); color: #34d399; }
+  .sc-badge.purple { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+  .sc-count { font-size: 11px; color: var(--muted); font-weight: 500; }
+  .sc-title { font-family: 'Instrument Serif', serif; font-size: 26px; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+  .sc-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 24px; }
+  .sc-steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .sc-step-pill { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 100px; padding: 4px 12px; }
+  .sc-footer { display: flex; align-items: center; justify-content: space-between; }
+  .sc-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--blue-light); text-decoration: none; }
+  .sc-cta-arrow { width: 28px; height: 28px; background: rgba(59,130,246,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all 0.2s; }
+  .series-card:hover .sc-cta-arrow { background: var(--blue); }
+  .sc-date { font-size: 11px; color: var(--muted); }
+
+  /* LATEST / FEATURED */
+  .featured { background: linear-gradient(135deg, var(--navy2), #0f1e35); border: 1px solid rgba(59,130,246,0.2); border-radius: 20px; padding: 40px; margin-bottom: 48px; display: flex; gap: 40px; align-items: center; }
+  .feat-left { flex: 1; }
+  .feat-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 14px; }
+  .feat-title { font-family: 'Instrument Serif', serif; font-size: 34px; color: #fff; line-height: 1.15; margin-bottom: 12px; }
+  .feat-title em { font-style: italic; color: var(--blue-light); }
+  .feat-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+  .feat-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); border-radius: 10px; padding: 12px 22px; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; transition: all 0.2s; }
+  .feat-btn:hover { background: #2563eb; transform: translateY(-1px); }
+  .feat-right { flex-shrink: 0; }
+  .feat-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 220px; }
+  .feat-step { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 10px 12px; font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500; }
+  .feat-step span { display: block; font-size: 9px; color: var(--blue-light); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+
+  /* ABOUT */
+  .about { max-width: 900px; margin: 0 auto; padding: 0 40px 100px; }
+  .about-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 20px; padding: 40px; display: flex; gap: 36px; align-items: center; }
+  .about-icon { width: 64px; height: 64px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .about-text {}
+  .about-name { font-family: 'Instrument Serif', serif; font-size: 22px; color: #fff; margin-bottom: 6px; }
+  .about-name em { font-style: italic; color: var(--blue-light); }
+  .about-bio { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; max-width: 100%; }
+  .footer-brand { font-family: 'Instrument Serif', serif; font-size: 16px; color: rgba(255,255,255,0.3); }
+  .footer-brand em { font-style: italic; color: rgba(99,130,246,0.5); }
+  .footer-note { font-size: 11px; color: rgba(255,255,255,0.15); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Financially <em>Hamza</em></a>
+  <div class="nav-links">
+    <a href="#series">Series</a>
+    <a href="#about">About</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag"><span class="hero-dot"></span>Finance · Pricing · Strategy</div>
+  <h1>Finance explained<br>like it <em>actually</em><br>works.</h1>
+  <p class="hero-sub">Real frameworks. Real examples. Written by someone still learning — which means no jargon, no fluff, just the things worth knowing.</p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="hs-val">3</div>
+      <div class="hs-label">Series published</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hs-val">16</div>
+      <div class="hs-label">Articles written</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hs-val">1</div>
+      <div class="hs-label">Topic at a time</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="series">
+  <div class="section-header">
+    <div class="section-title">The <em>Series</em></div>
+    <div class="section-desc">Each series covers one topic end to end — framework, examples, real cases.</div>
+  </div>
+
+  <!-- FEATURED -->
+  <div class="featured">
+    <div class="feat-left">
+      <div class="feat-tag">📌 Start Here</div>
+      <div class="feat-title">The Strategic<br><em>Pricing Roadmap</em></div>
+      <div class="feat-desc">7 steps that connect cost structure to capital allocation. The full framework for building a pricing decision from the ground up — not guessing one.</div>
+      <a href="roadmap.html" class="feat-btn">Read the full series →</a>
+    </div>
+    <div class="feat-right">
+      <div class="feat-steps">
+        <div class="feat-step"><span>Step 1</span>Cost Structure</div>
+        <div class="feat-step"><span>Step 2</span>Positioning</div>
+        <div class="feat-step"><span>Step 3</span>Customer Value</div>
+        <div class="feat-step"><span>Step 4</span>Elasticity</div>
+        <div class="feat-step"><span>Step 5</span>Discounts</div>
+        <div class="feat-step"><span>Step 6</span>Monitor</div>
+        <div class="feat-step"><span>Step 7</span>Capital</div>
+        <div class="feat-step"><span>Summary</span>Full Map</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Series 2 -->
+  <div class="series-card green" onclick="window.location='playbook.html'">
+    <div class="sc-top">
+      <span class="sc-badge green">The Pricing Playbook</span>
+      <span class="sc-count">7 articles</span>
+    </div>
+    <div class="sc-title">Each step — applied to a real business</div>
+    <div class="sc-desc">Seven real scenarios. What the business did wrong, what they changed, what happened to their numbers. One case per pricing step.</div>
+    <div class="sc-steps">
+      <span class="sc-step-pill">Logistics company</span>
+      <span class="sc-step-pill">Accounting firm</span>
+      <span class="sc-step-pill">Software reseller</span>
+      <span class="sc-step-pill">Real estate agency</span>
+      <span class="sc-step-pill">Manufacturer</span>
+      <span class="sc-step-pill">Staffing agency</span>
+      <span class="sc-step-pill">Retail chain</span>
+    </div>
+    <div class="sc-footer">
+      <span class="sc-cta">Read series <span class="sc-cta-arrow">→</span></span>
+      <span class="sc-date">Series 2</span>
+    </div>
+  </div>
+
+  <!-- Series 3 -->
+  <div class="series-card purple" onclick="window.location='casestudy.html'">
+    <div class="sc-top">
+      <span class="sc-badge purple">Case Study</span>
+      <span class="sc-count">Full breakdown</span>
+    </div>
+    <div class="sc-title">30% of revenue. 4% of profit. One client.</div>
+    <div class="sc-desc">A staffing agency that tracked revenue for three years and never looked at margin by client. What the report revealed, what they decided, and what happened to profit.</div>
+    <div class="sc-steps">
+      <span class="sc-step-pill">The situation</span>
+      <span class="sc-step-pill">The data</span>
+      <span class="sc-step-pill">The decision</span>
+      <span class="sc-step-pill">The outcome</span>
+    </div>
+    <div class="sc-footer">
+      <span class="sc-cta">Read case study <span class="sc-cta-arrow">→</span></span>
+      <span class="sc-date">Case Study 01</span>
+    </div>
+  </div>
+</div>
+
+<div class="about" id="about">
+  <div class="about-card">
+    <div class="about-icon">👋</div>
+    <div class="about-text">
+      <div class="about-name">Financially <em>Hamza</em></div>
+      <div class="about-bio">A finance student putting frameworks and concepts into plain language. Not a CFO. Not a consultant. Just someone who finds this stuff genuinely interesting and thinks the best way to understand something is to write it down properly — then share it in case it's useful to someone else.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Financially <em>Hamza</em></div>
+  <div class="footer-note">© 2025 Hamza A. All content original.</div>
+</footer>
+
+</body>
+</html>
